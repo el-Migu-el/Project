@@ -1,0 +1,165 @@
+,product_name,category
+0,champagne,alcohol_drinks
+1,bramble,alcohol_drinks
+2,white wine,alcohol_drinks
+3,dessert wine,alcohol_drinks
+4,french wine,alcohol_drinks
+5,red wine,alcohol_drinks
+6,beer,alcohol_drinks
+7,black beer,alcohol_drinks
+8,cider,alcohol_drinks
+9,samsung galaxy 10,electronics
+10,google tablet,electronics
+11,bluetooth headphones,electronics
+12,phone charger,electronics
+13,beats headphones,electronics
+14,airpods,electronics
+15,laptop,electronics
+16,vacuum cleaner,electronics
+17,iphone 8,electronics
+18,iMac,electronics
+19,phone car charger,electronics
+20,half-life: alyx,electronics
+21,half-life 2,electronics
+22,salmon,fish
+23,shrimp,fish
+24,fresh tuna,fish
+25,canned_tuna,fish
+26,seabass,fish
+27,catfish,fish
+28,trout,fish
+29,french fries,groceries
+30,burger sauce,groceries
+31,oil,groceries
+32,ketchup,groceries
+33,olive oil,groceries
+34,cooking oil,groceries
+35,sandwich,groceries
+36,cake,groceries
+37,yogurt cake,groceries
+38,candy bars,groceries
+39,chocolate bread,groceries
+40,energy drink,groceries
+41,muffins,groceries
+42,pancakes,groceries
+43,gums,groceries
+44,babies food,groceries
+45,napkins,groceries
+46,soup,groceries
+47,pet food,groceries
+48,milk,groceries
+49,cereals,groceries
+50,fresh bread,groceries
+51,rice,groceries
+52,spaghetti,groceries
+53,cream,groceries
+54,cookies,groceries
+55,salt,groceries
+56,oatmeal,groceries
+57,gluten free bar,groceries
+58,protein bar,groceries
+59,almonds,groceries
+60,low fat yogurt,groceries
+61,light mayo,groceries
+62,light cream,groceries
+63,hand protein bar,groceries
+64,nonfat milk,groceries
+65,whole wheat rice,groceries
+66,whole weat flour,groceries
+67,whole wheat pasta,groceries
+68,tomato sauce,groceries
+69,pasta,groceries
+70,parmesan cheese,groceries
+71,strong cheese,groceries
+72,cottage cheese,groceries
+73,fromage blanc,groceries
+74,mayonnaise,groceries
+75,butter,groceries
+76,eggs,groceries
+77,grated cheese,groceries
+78,tomato juice,groceries
+79,chocolate,groceries
+80,barbecue sauce,groceries
+81,energy bar,groceries
+82,brownies,groceries
+83,extra dark chocolate,groceries
+84,honey,groceries
+85,mushroom cream sauce,groceries
+86,pepper,groceries
+87,chutney,groceries
+88,chili,groceries
+89,toothpaste,hygiene
+90,shampoo,hygiene
+91,body spray,hygiene
+92,toilet paper,hygiene
+93,tooth brush,hygiene
+94,shower gel,hygiene
+95,deodorant,hygiene
+96,cologne,hygiene
+97,cotton buds,hygiene
+98,razor,hygiene
+99,bacon,meat
+100,hot dogs,meat
+101,burgers,meat
+102,chicken,meat
+103,escalope,meat
+104,turkey,meat
+105,ham,meat
+106,ground beef,meat
+107,meatballs,meat
+108,green tea,nonalcohol_drinks
+109,mint green tea,nonalcohol_drinks
+110,black tea,nonalcohol_drinks
+111,tea,nonalcohol_drinks
+112,frozen smoothie,nonalcohol_drinks
+113,mineral water,nonalcohol_drinks
+114,water spray,nonalcohol_drinks
+115,sparkling water,nonalcohol_drinks
+116,antioxydant juice,nonalcohol_drinks
+117,soda,nonalcohol_drinks
+118,yams,vegetables
+119,tomatoes,vegetables
+120,zucchini,vegetables
+121,avocado,vegetables
+122,shallot,vegetables
+123,flax seed,vegetables
+124,corn,vegetables
+125,carrots,vegetables
+126,blueberries,vegetables
+127,eggplant,vegetables
+128,asparagus,vegetables
+129,mint,vegetables
+130,mashed potato,vegetables
+131,vegetables mix,vegetables
+132,pickles,vegetables
+133,spinach,vegetables
+134,salad,vegetables
+135,asparagus,vegetables
+136,green grapes,vegetables
+137,melons,vegetables
+138,herb & pepper,vegetables
+139,frozen vegetables,vegetables
+140,cauliflower,vegetables
+141,green beans,vegetables
+142,strawberries,vegetables
+143,pokemon sword,videogames
+144,pokemon shield,videogames
+145,pokemon violet,videogames
+146,pokemon scarlet,videogames
+147,ratchet & clank,videogames
+148,ratchet & clank 2,videogames
+149,ratchet & clank 3,videogames
+150,metroid prime,videogames
+151,metroid fusion,videogames
+152,iPad,videogames
+153,airpods,videogames
+154,megaman zero,videogames
+155,megaman zero 2,videogames
+156,megaman zero 3,videogames
+157,megaman zero 4,videogames
+158,minecraft,videogames
+159,portal,videogames
+160,portal 2,videogames
+161,final fantasy XX,videogames
+162,final fantasy XIX,videogames
+163,final fantasy XXII,videogames
