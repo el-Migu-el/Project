@@ -27,3 +27,7 @@ Média relativa pode enganar, comparar sempre com a média global do dataset (em
 Dica 10:
 K-means é muito susceptivel a outliers. Por exemplo, futuramente os de densidade serão menos afetados negativamente por outliers.
 Algoritmo bastante interpretável
+Dica 11:
+Cuidado com vars binárias em clusters. Se há várias variaveis, usar encoding por exemplo. Assim, o empacto nos clusters é atenuado.
+Dica 12:
+Cluster de Filhos e jovens, validado via mapa. 
