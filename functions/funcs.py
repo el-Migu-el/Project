@@ -62,7 +62,7 @@ def print_cols(df: pd.DataFrame, df_name: str) -> None:
             print(col, end="\n\n")
 
 
-def load_dfs(path: str) -> dict:
+def create_dfs(path: str) -> dict:
     """Creates a dict of dataframes from all the .csv and .xlsx files in a folder.
     Args:
         path (str): The path to the folder containing the files.
@@ -81,11 +81,11 @@ def load_dfs(path: str) -> dict:
 
         if file.endswith(".csv"):
             globals()[name] = pd.read_csv(path + file)
-            print(f"Created dataframe {blue}{name}{end} for {file}")
+            print(f"Created dataframe {blue}{name}{end} from {file}")
 
         elif file.endswith(".xlsx"):
             globals()[name] = pd.read_excel(path + file)
-            print(f"Created dataframe {blue}{name}{end} for {file}")
+            print(f"Created dataframe {blue}{name}{end} from {file}")
 
         else:
             print(f"File {file} is not a .csv or .xlsx file. Skipping it.")
@@ -187,14 +187,15 @@ def create_educ_level(df: pd.DataFrame) -> list:
     return educ_level
 
 
-def save_to_csv(df_dict: dict, path: str) -> None:
+def save_to_csv(df_dict: dict, path: str, index: bool = False) -> None:
     """Saves the dataframes inside df_dict to separate .csv file in the path folder with the key as the file name. 
     Args:
         df_dict (dict): A dictionary with the name of the file to be created as the key and the dataframe as the value.
         path (str): The path to the folder where the files will be saved.
+        index (bool, optional): Whether to save the index of the dataframe. Defaults to False.
     Returns:
         None
     """
     for key in df_dict:
-        pd.DataFrame(df_dict[key]).to_csv(path + key + '.csv')
+        pd.DataFrame(df_dict[key]).to_csv(path + key + '.csv', index=index)
 
