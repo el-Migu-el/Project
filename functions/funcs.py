@@ -92,7 +92,36 @@ def create_dfs(path: str) -> dict:
 
     # Return a dictionary with the name of the dataframe as the key and the dataframe as the value
     return {k: v for k, v in globals().items() if isinstance(v, pd.DataFrame)}
-     
+
+    
+def drop_univariate_cols(df: pd.DataFrame, df_name: str, drop_all: bool = False) -> pd.DataFrame:
+    """Drops the columns that have only one unique value in a dataframe.
+        Asks user for confirmation before dropping the column if drop_all is False.
+    Args:
+        df (pd.DataFrame): The dataframe to be analyzed.
+        df_name (str): Name of the dataframe.
+    Returns:
+        pd.DataFrame: The dataframe with the columns that have only one unique value dropped.
+    """
+
+    # Loop through each column and check if there is only one unique value in it.
+    for i in df.columns:
+        if len(df[i].unique()) == 1:
+            if drop_all:
+                df = df.drop(i, axis=1)
+                print(f"Dropped column {blue}{i}{end} from {blue}{df_name}{end} because it had only one unique value.")
+            else:
+                drop = input(f"Column {blue}{i}{end} has only one unique value. Do you want to drop it? (y/n): ")
+                if drop.lower() == "y":
+                    df = df.drop(i, axis=1)
+                    print(f"Dropped column {blue}{i}{end} from {blue}{df_name}{end} because it had only one unique value.")
+                elif drop.lower() == "n":
+                    print(f"Did not drop column {blue}{i}{end} from {blue}{df_name}{end}.")
+                else:
+                    print("Please enter y or n.")
+
+    return df
+    
 
 def print_inf_cols(df: pd.DataFrame, df_name: str) -> None:
     """Prints the columns that have infinite values in a dataframe and how many they are.

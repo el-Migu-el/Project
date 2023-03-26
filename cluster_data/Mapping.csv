@@ -1,0 +1,165 @@
+product_name,category
+champagne,alcohol_drinks
+bramble,alcohol_drinks
+white wine,alcohol_drinks
+dessert wine,alcohol_drinks
+french wine,alcohol_drinks
+red wine,alcohol_drinks
+beer,alcohol_drinks
+black beer,alcohol_drinks
+cider,alcohol_drinks
+samsung galaxy 10,electronics
+google tablet,electronics
+bluetooth headphones,electronics
+phone charger,electronics
+beats headphones,electronics
+airpods,electronics
+laptop,electronics
+vacuum cleaner,electronics
+iphone 8,electronics
+iMac,electronics
+phone car charger,electronics
+half-life: alyx,electronics
+half-life 2,electronics
+salmon,fish
+shrimp,fish
+fresh tuna,fish
+canned_tuna,fish
+seabass,fish
+catfish,fish
+trout,fish
+french fries,groceries
+burger sauce,groceries
+oil,groceries
+ketchup,groceries
+olive oil,groceries
+cooking oil,groceries
+sandwich,groceries
+cake,groceries
+yogurt cake,groceries
+candy bars,groceries
+chocolate bread,groceries
+energy drink,groceries
+muffins,groceries
+pancakes,groceries
+gums,groceries
+babies food,groceries
+napkins,groceries
+soup,groceries
+pet food,groceries
+milk,groceries
+cereals,groceries
+fresh bread,groceries
+rice,groceries
+spaghetti,groceries
+cream,groceries
+cookies,groceries
+salt,groceries
+oatmeal,groceries
+gluten free bar,groceries
+protein bar,groceries
+almonds,groceries
+low fat yogurt,groceries
+light mayo,groceries
+light cream,groceries
+hand protein bar,groceries
+nonfat milk,groceries
+whole wheat rice,groceries
+whole weat flour,groceries
+whole wheat pasta,groceries
+tomato sauce,groceries
+pasta,groceries
+parmesan cheese,groceries
+strong cheese,groceries
+cottage cheese,groceries
+fromage blanc,groceries
+mayonnaise,groceries
+butter,groceries
+eggs,groceries
+grated cheese,groceries
+tomato juice,groceries
+chocolate,groceries
+barbecue sauce,groceries
+energy bar,groceries
+brownies,groceries
+extra dark chocolate,groceries
+honey,groceries
+mushroom cream sauce,groceries
+pepper,groceries
+chutney,groceries
+chili,groceries
+toothpaste,hygiene
+shampoo,hygiene
+body spray,hygiene
+toilet paper,hygiene
+tooth brush,hygiene
+shower gel,hygiene
+deodorant,hygiene
+cologne,hygiene
+cotton buds,hygiene
+razor,hygiene
+bacon,meat
+hot dogs,meat
+burgers,meat
+chicken,meat
+escalope,meat
+turkey,meat
+ham,meat
+ground beef,meat
+meatballs,meat
+green tea,nonalcohol_drinks
+mint green tea,nonalcohol_drinks
+black tea,nonalcohol_drinks
+tea,nonalcohol_drinks
+frozen smoothie,nonalcohol_drinks
+mineral water,nonalcohol_drinks
+water spray,nonalcohol_drinks
+sparkling water,nonalcohol_drinks
+antioxydant juice,nonalcohol_drinks
+soda,nonalcohol_drinks
+yams,vegetables
+tomatoes,vegetables
+zucchini,vegetables
+avocado,vegetables
+shallot,vegetables
+flax seed,vegetables
+corn,vegetables
+carrots,vegetables
+blueberries,vegetables
+eggplant,vegetables
+asparagus,vegetables
+mint,vegetables
+mashed potato,vegetables
+vegetables mix,vegetables
+pickles,vegetables
+spinach,vegetables
+salad,vegetables
+asparagus,vegetables
+green grapes,vegetables
+melons,vegetables
+herb & pepper,vegetables
+frozen vegetables,vegetables
+cauliflower,vegetables
+green beans,vegetables
+strawberries,vegetables
+pokemon sword,videogames
+pokemon shield,videogames
+pokemon violet,videogames
+pokemon scarlet,videogames
+ratchet & clank,videogames
+ratchet & clank 2,videogames
+ratchet & clank 3,videogames
+metroid prime,videogames
+metroid fusion,videogames
+iPad,videogames
+airpods,videogames
+megaman zero,videogames
+megaman zero 2,videogames
+megaman zero 3,videogames
+megaman zero 4,videogames
+minecraft,videogames
+portal,videogames
+portal 2,videogames
+final fantasy XX,videogames
+final fantasy XIX,videogames
+final fantasy XXII,videogames

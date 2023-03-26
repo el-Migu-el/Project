@@ -3,3 +3,6 @@
     - Qual o critério de escolha de variáveis para o modelo? Por exemplo, as variaveis binárias e de localização.
     - Se eu quiser criar um cluster manual, posso? Por exemplo, já temos dois grupos óbvios, os supermercados (juto do MARL) e os jovens estudantes (Nova FCT).
     
+
+    - ir tirando clusters obvios em iterações sucessivas e depois ver modelos já com menos dados. 
+    - Manualmente remover os dados de clusters obvios.  
