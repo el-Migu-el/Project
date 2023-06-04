@@ -19,7 +19,7 @@ DICA 6:
 Arvore de decisão sobre os segmentos é uma boa maneira de perceber as caracteristicas mais importantes de cada segmento.
 Primeira segmentação útil para o projeto: K-means (próxima aula)
 DICA 7:
-A idade será inportante para segmentação de clientes. (> de x anos)
+A idade será importante para segmentação de clientes. (> de x anos)
 DICA 8:
 Comparar indivíduos específicos com a média do segmento. Exemplo: cliente X gasta 2000 em talho, mas a média do segmento é 1000.
 DICA 9:
@@ -31,3 +31,52 @@ Dica 11:
 Cuidado com vars binárias em clusters. Se há várias variaveis, usar encoding por exemplo. Assim, o empacto nos clusters é atenuado.
 Dica 12:
 Cluster de Filhos e jovens, validado via mapa. 
+Dica 13:
+Standardize or not? Nao há resposta real, mas pode não ser necessário. Testar com e sem.
+Dica 14:
+Há um cluster que se caracteriza por comprar pouca comida. Compra outras coisas.
+Dica 15:
+Fazer regras de associação consoante os clusters diferentes (ex: cluster 1 compra x, cluster 2 compra y, cluster 3 compra z)
+Ou seja, parametros diferentes para cada cluster.
+
+
+Hiperparametro: característica que nao é definida pelo modelo, mas sim pelo utilizador.
+Não Converge: não há um ponto ótimo. 
+
+DBSCAN: 
+    - Epsylon pode ser definido também por elbow curve.
+    - MinPts: numero minimo de pontos para ser considerado um cluster.
+    Funcionamento:
+        - Começa por escolher um ponto aleatório
+        - Verifica se o numero de pontos dentro do epsylon é maior que o minimo
+        - Se sim, cria um cluster e adiciona os pontos dentro do epsylon
+        - Depois escolhe um ponto aleatório dentro do cluster e verifica se o numero de pontos dentro do epsylon é maior que o minimo
+        - Se sim, adiciona os pontos dentro do epsylon ao cluster e repete o processo
+
+        
+    
+
+        Tipos de pontos:
+        - Core: tem mais pontos dentro do epsylon que o minimo
+        - Border: tem menos pontos dentro do epsylon que o minimo, mas tem pontos dentro do epsylon que são core
+        - Noise: não tem pontos dentro do epsylon que são core
+
+Mean-Shift:
+    - Bandwidth: tamanho da janela
+
+    Funcionamento:
+        - Não é preciso definir o numero de clusters
+        - Começa por escolher um ponto aleatório como centro da janela
+        - Calcula a média dos pontos dentro da janela
+        - Move a janela para a média
+        - Repete o processo até que a janela não se mova
+        - Repete o processo para todos os pontos
+
+        - Pode ser usado para segmentação de imagens
+
+Livro:
+    - Singularity is Near by Ray Kurzweil
+
+
+Association Rules:
+    Lift -> Lift acima de 2 é bom

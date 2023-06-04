@@ -1,5 +1,19 @@
-import pandas as pd
 import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import matplotlib.style as style
+import seaborn as sns
+
+
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
+from sklearn.cluster import KMeans, AgglomerativeClustering, AffinityPropagation
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.metrics import silhouette_samples, silhouette_score
+
+os.chdir("C:/Users/migue/OneDrive - NOVAIMS/Data Science/Coding Courses/Machine Learning II/Project")
+wd = os.getcwd()
 
 # Colors for printing
 bold = "\033[1m"
@@ -216,7 +230,7 @@ def create_educ_level(df: pd.DataFrame) -> list:
     return educ_level
 
 
-def save_to_csv(df_dict: dict, path: str, index: bool = False) -> None:
+def save_to_csv(df_dict: dict, path: str = wd + "/data/", index: bool = False) -> None:
     """Saves the dataframes inside df_dict to separate .csv file in the path folder with the key as the file name. 
     Args:
         df_dict (dict): A dictionary with the name of the file to be created as the key and the dataframe as the value.
@@ -227,4 +241,189 @@ def save_to_csv(df_dict: dict, path: str, index: bool = False) -> None:
     """
     for key in df_dict:
         pd.DataFrame(df_dict[key]).to_csv(path + key + '.csv', index=index)
+
+
+def save_clusters(clusters: dict, path: str = wd + "/cluster_data/") -> None:
+    """Saves the clusters to a csv file.
+
+    Args:
+        clusters (dict): The clusters to be saved.
+    """
+    
+    
+    for key in clusters:
+        pd.DataFrame(clusters[key]).to_csv(path + key + '.csv', index=False)
+
+    print(f"Clusters saved to {path}")
+
+
+
+def create_clusters(data: pd.DataFrame,
+                    clustering_functions: list,
+                    clustering_params: list,
+                    cluster_names: list = None,
+                    scaler_functions: list = None,
+                    scaler_names: list = None
+                    ) -> dict:
+    
+    """ Creates clusters using the clustering functions and parameters provided.
+
+    Args:
+        data (pd.DataFrame): the data to be clustered.
+        clustering_functions (list): the clustering functions to be used.
+        clustering_params (list): list of parameters for each clustering functions.
+        cluster_names (list, optional): The names of the clustering methods. Defaults to None.
+        scaler_functions (list, optional): the scaling functions to transform the data. Defaults to None.
+        scaler_names (list, optional): the names of these scaling functions. Defaults to None.
+
+    Returns:
+        _type_: A dictionary with the name of the clustering method as the key and the clustering object as the value.
+    """
+    
+    clusters = {}
+    for scaler_name, scaler in zip(scaler_names, scaler_functions):
+        curr_data = scaler().fit_transform(data)
+
+        for i, (cluster_name, cluster_func) in enumerate(zip(cluster_names, clustering_functions)):
+            clusters[f'{cluster_name}_{scaler_name}'] = cluster_func(**clustering_params[i]).fit(curr_data)
+        
+        
+    return clusters
+
+
+# corr heatmap
+def corr_heatmap(df: pd.DataFrame, title: str) -> None:
+    """Plots a correlation heatmap for the dataframe provided.
+
+    Args:
+        df (pd.DataFrame): The dataframe to be plotted.
+        title (str): The title of the plot.
+    """
+    corr = df.corr()
+    plt.figure(figsize=(10,10))
+    plt.title(title)
+    mask = np.triu(np.ones_like(corr, dtype=bool))
+    sns.heatmap(corr, annot=True, cmap="coolwarm", vmin=-1, vmax=1, mask=mask)
+    plt.show()
+
+
+# clustermap
+def clustermap(df: pd.DataFrame, title: str) -> None:
+    """Plots a clustermap for the dataframe provided.
+
+    Args:
+        df (pd.DataFrame): The dataframe to be plotted.
+        title (str): The title of the plot.
+    """
+    corr = df.corr()
+    plt.figure(figsize=(10,10))
+    plt.title(title)
+    sns.clustermap(corr, annot=True, cmap="coolwarm", vmin=-1, vmax=1)
+    plt.show()
+
+
+def plot_silhouette(X: pd.DataFrame, range_n_clusters: list) -> None:
+    """Plots the silhouette score for each cluster.
+    
+    Args:
+        X (pd.DataFrame): The data to be clustered.
+        range_n_clusters (list): The range of clusters to be used.
+    Returns:
+        None
+        """
+    silhouette_avg_n_clusters = []
+
+    for n_clusters in range_n_clusters:
+        # Create a subplot with 1 row and 2 columns
+        fig, (ax1, ax2) = plt.subplots(1, 2)
+        fig.set_size_inches(18, 7)
+
+        # The 1st subplot is the silhouette plot
+        # The silhouette coefficient can range from -1, 1 but in this example all
+        # lie within [-0.1, 1]
+        ax1.set_xlim([-0.1, 1])
+        # The (n_clusters+1)*10 is for inserting blank space between silhouette
+        # plots of individual clusters, to demarcate them clearly.
+        ax1.set_ylim([0, len(X) + (n_clusters + 1) * 10])
+
+        # Initialize the clusterer with n_clusters value and a random generator
+        # seed of 10 for reproducibility.
+        clusterer = KMeans(n_clusters=n_clusters, random_state=42)
+        cluster_labels = clusterer.fit_predict(X)
+
+        # The silhouette_score gives the average value for all the samples.
+        # This gives a perspective into the density and separation of the formed
+        # clusters
+        silhouette_avg = silhouette_score(X, cluster_labels)
+        print("For n_clusters =", n_clusters,
+              "The average silhouette_score is :", silhouette_avg)
+
+        silhouette_avg_n_clusters.append(silhouette_avg)
+        # Compute the silhouette scores for each sample
+        sample_silhouette_values = silhouette_samples(X, cluster_labels)
+
+        y_lower = 10
+        for i in range(n_clusters):
+            # Aggregate the silhouette scores for samples belonging to
+            # cluster i, and sort them
+            ith_cluster_silhouette_values = \
+                sample_silhouette_values[cluster_labels == i]
+
+            ith_cluster_silhouette_values.sort()
+
+            size_cluster_i = ith_cluster_silhouette_values.shape[0]
+            y_upper = y_lower + size_cluster_i
+
+            color = cm.nipy_spectral(float(i) / n_clusters)
+            ax1.fill_betweenx(np.arange(y_lower, y_upper),
+                              0, ith_cluster_silhouette_values,
+                              facecolor=color, edgecolor=color, alpha=0.7)
+
+            # Label the silhouette plots with their cluster numbers at the middle
+            ax1.text(-0.05, y_lower + 0.5 * size_cluster_i, str(i))
+
+            # Compute the new y_lower for next plot
+            y_lower = y_upper + 10  # 10 for the 0 samples
+
+        ax1.set_title("The silhouette plot for the various clusters.")
+        ax1.set_xlabel("The silhouette coefficient values")
+        ax1.set_ylabel("Cluster label")
+
+        # The vertical line for average silhouette score of all the values
+        ax1.axvline(x=silhouette_avg, color="red", linestyle="--")
+
+        ax1.set_yticks([])  # Clear the yaxis labels / ticks
+        ax1.set_xticks([-0.1, 0, 0.2, 0.4, 0.6, 0.8, 1])
+
+        # 2nd Plot showing the actual clusters formed
+        colors = cm.nipy_spectral(cluster_labels.astype(float) / n_clusters)
+        ax2.scatter(X[:, 0], X[:, 1], marker='.', s=30, lw=0, alpha=0.7,
+                    c=colors, edgecolor='k')
+
+        # Labeling the clusters
+        centers = clusterer.cluster_centers_
+        # Draw white circles at cluster centers
+        ax2.scatter(centers[:, 0], centers[:, 1], marker='o',
+                    c="white", alpha=1, s=200, edgecolor='k')
+
+        for i, c in enumerate(centers):
+            ax2.scatter(c[0], c[1], marker='$%d$' % i, alpha=1,
+                        s=50, edgecolor='k')
+
+        ax2.set_title("The visualization of the clustered data.")
+        ax2.set_xlabel("Feature space for the 1st feature")
+        ax2.set_ylabel("Feature space for the 2nd feature")
+
+        plt.suptitle(("Silhouette analysis for KMeans clustering on sample data "
+                      "with n_clusters = %d" % n_clusters),
+                     fontsize=14, fontweight='bold')
+
+    plt.show()
+
+
+    style.use("fivethirtyeight")
+    plt.plot(range_n_clusters, silhouette_avg_n_clusters)
+    plt.xlabel("Number of Clusters (k)")
+    plt.ylabel("silhouette score")
+    plt.show()
 
