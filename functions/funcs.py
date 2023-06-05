@@ -448,7 +448,7 @@ def group_by_cluster(df: pd.DataFrame, cluster_col: str) -> pd.DataFrame:
     # convert the cluster counts to integers and to show no decimal places
     cluster_counts = cluster_counts.astype(int)
 
-    grouped = pd.concat([df.groupby(cluster_col).mean().round(2).T, overall_mean], axis = 1)[:-1]
+    grouped = pd.concat([df.groupby(cluster_col).mean().round(2).T, overall_mean], axis = 1)
     grouped = pd.concat([grouped.T, cluster_counts], axis = 1)
     grouped = grouped.T
     
