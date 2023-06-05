@@ -261,9 +261,9 @@ def save_clusters(clusters: dict, path: str = wd + "/cluster_data/") -> None:
 def create_clusters(data: pd.DataFrame,
                     clustering_functions: list,
                     clustering_params: list,
-                    cluster_names: list = None,
-                    scaler_functions: list = None,
-                    scaler_names: list = None
+                    cluster_names: list | None = None,
+                    scaler_functions: list | None = None,
+                    scaler_names: list | None = None
                     ) -> dict:
     
     """ Creates clusters using the clustering functions and parameters provided.
@@ -426,4 +426,33 @@ def plot_silhouette(X: pd.DataFrame, range_n_clusters: list) -> None:
     plt.xlabel("Number of Clusters (k)")
     plt.ylabel("silhouette score")
     plt.show()
+
+
+def group_by_cluster(df: pd.DataFrame, cluster_col: str) -> pd.DataFrame:
+    """Groups the dataframe by the mean of each cluster.
+       Also adds a column for the overall mean.
+       Also adds a row for the cluster size.
+
+    Args:
+        df (pd.DataFrame): The dataframe to be grouped.
+        cluster_col (str): The column containing the cluster labels.
+
+    Returns:
+        pd.DataFrame: The grouped dataframe.
+    """
+    overall_mean = pd.Series(df.mean().round(1), name = 'Overall Mean')
+    # count the number of rows in each cluster
+    cluster_counts = df.groupby(cluster_col).count().iloc[:,0].rename('Cluster Size')
+    # add the overall count to the cluster count
+    cluster_counts = pd.concat([cluster_counts, pd.Series(df.shape[0], index = ['Overall Mean'], name = 'Cluster Size')])
+    # convert the cluster counts to integers and to show no decimal places
+    cluster_counts = cluster_counts.astype(int)
+
+    grouped = pd.concat([df.groupby(cluster_col).mean().round(2).T, overall_mean], axis = 1)[:-1]
+    grouped = pd.concat([grouped.T, cluster_counts], axis = 1)
+    grouped = grouped.T
+    
+    # set the row "Cluster Size" to be a string with no decimal places
+    grouped.loc['Cluster Size'] = grouped.loc['Cluster Size'].astype(str).str[:-2]
+    return grouped
 
