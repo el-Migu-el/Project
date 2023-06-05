@@ -1,0 +1,82 @@
+DICA 1:
+name -> customer name; padrão associado a nome, algo repete-se muito.
+Cuidado com joins, verificar se não há criação de duplicados! 
+Uma boa contramedida é ver o numero de observações antes e depois do join.
+(verificar tambem se estamos a utilizar inner, left, etc. joins)
+Join vs Merge:
+    -Join: junta duas tabelas baseado no indice em comum
+    -Merge: junta duas tabelas baseado numa coluna em comum, mas permite que sejam utilizadas colunas de nomes diferentes
+DICA 2:
+Usar as coordenadas geográficas para obter informações. Plot graph using lat, lon. 
+Útil para segmentação de clientes
+DICA 3:
+15 grupos ou mais é muito, muito difícil de interpretar. É loucura tentar interpretar 15 grupos.
+DICA 4:
+Potencial de cliente é importante. 
+DICA 5:
+Das melhores maneiras de interpretar segmentos é dando nomes a eles.
+DICA 6:
+Arvore de decisão sobre os segmentos é uma boa maneira de perceber as caracteristicas mais importantes de cada segmento.
+Primeira segmentação útil para o projeto: K-means (próxima aula)
+DICA 7:
+A idade será importante para segmentação de clientes. (> de x anos)
+DICA 8:
+Comparar indivíduos específicos com a média do segmento. Exemplo: cliente X gasta 2000 em talho, mas a média do segmento é 1000.
+DICA 9:
+Média relativa pode enganar, comparar sempre com a média global do dataset (em vez da média do cluster)
+Dica 10:
+K-means é muito susceptivel a outliers. Por exemplo, futuramente os de densidade serão menos afetados negativamente por outliers.
+Algoritmo bastante interpretável
+Dica 11:
+Cuidado com vars binárias em clusters. Se há várias variaveis, usar encoding por exemplo. Assim, o empacto nos clusters é atenuado.
+Dica 12:
+Cluster de Filhos e jovens, validado via mapa. 
+Dica 13:
+Standardize or not? Nao há resposta real, mas pode não ser necessário. Testar com e sem.
+Dica 14:
+Há um cluster que se caracteriza por comprar pouca comida. Compra outras coisas.
+Dica 15:
+Fazer regras de associação consoante os clusters diferentes (ex: cluster 1 compra x, cluster 2 compra y, cluster 3 compra z)
+Ou seja, parametros diferentes para cada cluster.
+
+
+Hiperparametro: característica que nao é definida pelo modelo, mas sim pelo utilizador.
+Não Converge: não há um ponto ótimo. 
+
+DBSCAN: 
+    - Epsylon pode ser definido também por elbow curve.
+    - MinPts: numero minimo de pontos para ser considerado um cluster.
+    Funcionamento:
+        - Começa por escolher um ponto aleatório
+        - Verifica se o numero de pontos dentro do epsylon é maior que o minimo
+        - Se sim, cria um cluster e adiciona os pontos dentro do epsylon
+        - Depois escolhe um ponto aleatório dentro do cluster e verifica se o numero de pontos dentro do epsylon é maior que o minimo
+        - Se sim, adiciona os pontos dentro do epsylon ao cluster e repete o processo
+
+        
+    
+
+        Tipos de pontos:
+        - Core: tem mais pontos dentro do epsylon que o minimo
+        - Border: tem menos pontos dentro do epsylon que o minimo, mas tem pontos dentro do epsylon que são core
+        - Noise: não tem pontos dentro do epsylon que são core
+
+Mean-Shift:
+    - Bandwidth: tamanho da janela
+
+    Funcionamento:
+        - Não é preciso definir o numero de clusters
+        - Começa por escolher um ponto aleatório como centro da janela
+        - Calcula a média dos pontos dentro da janela
+        - Move a janela para a média
+        - Repete o processo até que a janela não se mova
+        - Repete o processo para todos os pontos
+
+        - Pode ser usado para segmentação de imagens
+
+Livro:
+    - Singularity is Near by Ray Kurzweil
+
+
+Association Rules:
+    Lift -> Lift acima de 2 é bom
